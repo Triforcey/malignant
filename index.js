@@ -18,6 +18,15 @@ require('./database.js').connect(mongoConfig.url, mongoConfig.dbName).then(db =>
     res.render('index');
   });
 
+  app.use((req, res) => {
+    res.status(404).send('404');
+  });
+
+  app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).send('500');
+  });
+
   io.on('connection', ws => {
     db.getMessages().then(msgs => {
       ws.emit('init', msgs);
