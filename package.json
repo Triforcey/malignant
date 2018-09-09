@@ -4,7 +4,8 @@
   "description": "A very dangerous operation",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon"
+    "start": "node index.js",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,20 @@
     "url": "https://github.com/Triforcey/malignant/issues"
   },
   "homepage": "https://github.com/Triforcey/malignant#readme",
+  "nodemonConfig": {
+    "watch": [
+      ".",
+      ".env"
+    ]
+  },
   "devDependencies": {
     "nodemon": "^1.18.4"
+  },
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.4",
+    "pug": "^2.0.3",
+    "socket.io": "^2.1.1"
   }
 }
