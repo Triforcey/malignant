@@ -2,9 +2,18 @@ require('dotenv').config();
 
 var express = require('express');
 var app = express();
+app.enable('trust proxy');
 app.set('view engine', 'pug');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+
+if (process.env.SECURE == 'true') {
+  app.use(require('helmet')());
+  app.use((req, res, next) => {
+    if (req.protocol != 'http') return next();
+    res.status(301).redirect(`https://${req.get('host')}${req.originalUrl}`);
+  });
+}
 
 var mongoConfig = {
   url: process.env.DB_URL || 'mongodb://localhost:27017',
