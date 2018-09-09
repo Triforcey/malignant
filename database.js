@@ -23,6 +23,7 @@ class Database {
   getMessages() {
     return new Promise((resolve, reject) => {
       this.messagesCollection.find().sort({ date: -1 }).limit(100).toArray().then(msgs => {
+        msgs.reverse();
         msgs = msgs.map(msg => {
           return msg.body;
         });

@@ -1,9 +1,11 @@
 var ws = io();
 
 function displayMessage(msg) {
+  var scrollDown = messages.scrollTop == messages.scrollHeight - messages.offsetHeight;
   var e = document.createElement('p');
   e.innerHTML = msg;
   messages.appendChild(e);
+  if (scrollDown) messages.scrollTop = messages.scrollHeight;
 }
 
 ws.on('init', msgs => {
@@ -21,3 +23,9 @@ function send() {
   ws.emit('message', msgInput.value);
   msgInput.value = '';
 }
+
+msgInput.onkeydown = e => {
+  if (e.key != 'Enter') return;
+  e.preventDefault();
+  send();
+};
