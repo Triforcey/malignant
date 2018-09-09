@@ -1,0 +1,22 @@
+{
+  "name": "malignant",
+  "version": "0.0.0",
+  "description": "A very dangerous operation",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Triforcey/malignant.git"
+  },
+  "author": "Jay Dee & Sam Boi",
+  "license": "GPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/Triforcey/malignant/issues"
+  },
+  "homepage": "https://github.com/Triforcey/malignant#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
